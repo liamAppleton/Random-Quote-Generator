@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div className="mb-3">
-        <QuoteBox />
+        <QuoteBox handleSubmit={(quote) => console.log(quote)} />
       </div>
     </>
   );

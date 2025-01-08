@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./QuoteBox.module.css";
 
-const QuoteBox = () => {
+const QuoteBox = ({ handleSubmit }) => {
   const [quote, setQuote] = useState("");
+  useEffect(() => {
+    handleSubmit(quote);
+  }, [quote]);
 
   const fetchData = async () => {
     const apiKey = "bWbwxDdtS9Bzsouymirguw==uZhWEMRD79j4eKVg";
