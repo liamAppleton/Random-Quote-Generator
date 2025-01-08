@@ -6,10 +6,16 @@ import { useState, useEffect } from "react";
 function App() {
   const [quotes, setQuotes] = useState([]);
   const [deleteClicked, setDelete] = useState(false);
+  const [copyId, setId] = useState(-1);
 
   const deleteQuote = (id) => {
     setQuotes(quotes.filter((q) => q.id !== id));
     setDelete(true);
+  };
+
+  const clickedCopy = (id) => {
+    setId(id);
+    setTimeout(() => setId(-1), 1000);
   };
 
   return (
@@ -31,6 +37,8 @@ function App() {
           handleClick={(id) => {
             deleteQuote(id);
           }}
+          clickedCopy={clickedCopy}
+          clickedCopyId={copyId}
         />
       </div>
     </>
