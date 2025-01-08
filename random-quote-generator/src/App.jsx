@@ -5,10 +5,15 @@ import { useState } from "react";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
+  console.log(quotes);
   return (
     <>
       <div className="mb-5">
-        <QuoteBox handleSubmit={(quote) => setQuotes([...quotes, quote])} />
+        <QuoteBox
+          handleSubmit={(quote) => {
+            setQuotes([...quotes, { id: quotes.length + 1, quote: quote }]);
+          }}
+        />
       </div>
       <div className="mb-3">
         <FavouritesTable quotes={quotes} />
