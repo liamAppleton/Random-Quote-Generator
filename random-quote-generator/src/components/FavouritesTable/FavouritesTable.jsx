@@ -25,8 +25,8 @@ const FavouritesTable = ({
                 <td>{q.quote.slice(0, 30) + "..."}</td>
                 <td>
                   <button
-                    onClick={() => clickedCopy(q.id)}
                     className="btn btn-secondary"
+                    onClick={() => clickedCopy(q.id)}
                   >
                     {clickedCopyId === q.id ? (
                       <>

@@ -4,6 +4,7 @@ import styles from "./QuoteBox.module.css";
 const QuoteBox = ({ handleSubmit, deleteClicked }) => {
   const [quote, setQuote] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit(quote);
@@ -17,13 +18,12 @@ const QuoteBox = ({ handleSubmit, deleteClicked }) => {
     try {
       const response = await fetch(apiUrl, {
         method: "GET",
-        headers: {
-          "X-Api-Key": apiKey,
-        },
+        headers: { "X-Api-Key": apiKey },
       });
-
+      console.log(response);
       if (!response.ok) {
         setLoading(false);
+        setError(response.statusText);
         throw new Error(`Error: ${response.statusText}`);
       }
 
@@ -32,27 +32,29 @@ const QuoteBox = ({ handleSubmit, deleteClicked }) => {
       setQuote(data[0].quote);
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      setError(response.statusText);
     }
+
+    setError("");
   };
 
   return (
     <div className={styles.container}>
       <div className={["mb-4", styles.quoteBox].join(" ")}>
         {isLoading && (
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         )}
         {quote && !deleteClicked && <p>{quote}</p>}
       </div>
-
+      {error && <p className="text-danger">{error}</p>}
       <button
+        className="btn btn-primary"
         onClick={(e) => {
           e.preventDefault();
           fetchData();
         }}
-        className="btn btn-primary"
       >
         Get quote
       </button>
