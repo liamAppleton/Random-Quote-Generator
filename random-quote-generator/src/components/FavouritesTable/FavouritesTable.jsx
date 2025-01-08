@@ -12,7 +12,7 @@ const FavouritesTable = ({
       <table className="table">
         <thead>
           <tr>
-            <th>Quote</th>
+            <th>Quote history</th>
             <th></th>
             <th></th>
           </tr>

@@ -16,6 +16,9 @@ function App() {
   const clickedCopy = (id) => {
     setId(id);
     setTimeout(() => setId(-1), 1000);
+    const quote = quotes.filter((q) => q.id === id);
+    console.log(quote);
+    navigator.clipboard.writeText(quote[0].quote);
   };
 
   return (
