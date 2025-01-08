@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./QuoteBox.module.css";
 
 const QuoteBox = () => {
-  const apiKey = "bWbwxDdtS9Bzsouymirguw==uZhWEMRD79j4eKVg";
-  const apiUrl = "https://api.api-ninjas.com/v1/quotes";
+  const [quote, setQuote] = useState("");
 
   const fetchData = async () => {
+    const apiKey = "bWbwxDdtS9Bzsouymirguw==uZhWEMRD79j4eKVg";
+    const apiUrl = "https://api.api-ninjas.com/v1/quotes";
     try {
       const response = await fetch(apiUrl, {
         method: "GET",
@@ -19,28 +20,24 @@ const QuoteBox = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      setQuote(data[0].quote);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
-      <form
-        className={styles.container}
-        onSubmit={(e) => {
+    <div className={styles.container}>
+      {quote && <p>{quote}</p>}
+      <button
+        onClick={(e) => {
           e.preventDefault();
           fetchData();
         }}
+        className="btn btn-primary"
       >
-        <div className="mb-3">
-          <input type="text" className="form-control" readOnly={true} />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Generate quote
-        </button>
-      </form>
+        Get quote
+      </button>
     </div>
   );
 };
