@@ -28,7 +28,10 @@ const QuoteBox = () => {
 
   return (
     <div className={styles.container}>
-      {quote && <p>{quote}</p>}
+      <div className={["mb-4", styles.quoteBox].join(" ")}>
+        {quote && <p>{quote}</p>}
+      </div>
+
       <button
         onClick={(e) => {
           e.preventDefault();

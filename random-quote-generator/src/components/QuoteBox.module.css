@@ -10,4 +10,17 @@ p {
     font-size: 15px;
     text-align: center;
     padding: 10px;
+    color:  #2C3E50
+
+}
+
+.quoteBox {
+    border: solid 3px #BDC3C7;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    min-width: 80%;
+    height: 150px;
+    margin: 40px;
+    padding: 10px;
+    text-align: center;
 }
