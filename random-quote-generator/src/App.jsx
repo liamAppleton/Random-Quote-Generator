@@ -34,7 +34,7 @@ function App() {
           deleteClicked={deleteClicked}
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-3 container">
         <FavouritesTable
           quotes={quotes}
           handleClick={(id) => {

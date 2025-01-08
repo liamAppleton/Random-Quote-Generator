@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import styles from "./FavouritesTable.module.css";
 
 const FavouritesTable = ({
   quotes,
@@ -9,7 +10,7 @@ const FavouritesTable = ({
 }) => {
   return (
     <>
-      <table className="table">
+      <table className={["table", styles.tableDisplay].join(" ")}>
         <thead>
           <tr>
             <th>Quote history</th>
