@@ -3,6 +3,7 @@ import styles from "./QuoteBox.module.css";
 
 const QuoteBox = ({ handleSubmit }) => {
   const [quote, setQuote] = useState("");
+
   useEffect(() => {
     handleSubmit(quote);
   }, [quote]);
