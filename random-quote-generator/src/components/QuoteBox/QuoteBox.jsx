@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./QuoteBox.module.css";
 
-const QuoteBox = ({ handleSubmit }) => {
+const QuoteBox = ({ handleSubmit, deleteClicked }) => {
   const [quote, setQuote] = useState("");
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const QuoteBox = ({ handleSubmit }) => {
   return (
     <div className={styles.container}>
       <div className={["mb-4", styles.quoteBox].join(" ")}>
-        {quote && <p>{quote}</p>}
+        {quote && !deleteClicked && <p>{quote}</p>}
       </div>
 
       <button
